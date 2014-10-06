@@ -69,8 +69,8 @@ class ZoomLine {
     updateLineEnd();
     
     float largest = max(width,height) / poseScale;
-    this.offSetX = random(-largest * .03,largest * .03);
-    this.offSetY = random(-largest * .03,largest * .03);
+    this.offSetX = random(-largest * .01,largest * .01);
+    this.offSetY = random(-largest * .01,largest * .01);
   }
   
   //Finds a body to float around

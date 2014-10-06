@@ -58,12 +58,15 @@ void setup() {
 void draw() {  
   background(255);
   stroke(0);
+  makeZoomer();
   
   
   
   if(found > 0) {
     translate(posePosition.x, posePosition.y);
     scale(poseScale);
+    rotateX(radians(poseOrientation.x));
+    rotateY(radians(poseOrientation.y));
     drawLines();
   }
 }
@@ -145,20 +148,19 @@ void oscEvent(OscMessage m) {
   }
 }
 
-void keyPressed(){
-  makeZoomer();
-  print (zoomers.size());
-}
 
 void makeZoomer() {
-  zoomers.add(new ZoomLine(random(width) / poseScale, random(height) / poseScale ,
+  if (found > 0) {
+      if ((eyebrowLeft > 8.8) && (eyebrowLeft > 8.8)) {
+          zoomers.add(new ZoomLine(random(width) / poseScale, random(height) / poseScale ,
                         random(width) / poseScale, random(height) / poseScale, int(random(10,20))));
+      }
+  }
 }
   
 void drawLines() {
   for (int i = 0; i < zoomers.size(); i++) {
     zoomers.get(i).drawMe();
     zoomers.get(i).update();
-    print (zoomers.get(i).lineLoc.x);
   }
 }
